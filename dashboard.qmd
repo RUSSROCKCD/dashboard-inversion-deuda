@@ -1,0 +1,196 @@
+---
+title: "Inversión y Cálculo de la Deuda"
+format:
+  dashboard:
+    orientation: rows
+    theme: flatly
+    nav-buttons: []
+---
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(googlesheets4)
+library(tidyverse)
+library(scales)
+library(plotly)
+library(DT)
+
+# --- Autenticación y lectura ---
+sheet_id <- "1I0rkR8shKEgKyfKvH9Q50dz3yVWE114d0p4OW5Q-BJ0"
+respuestas <- read_sheet(sheet_id, sheet = 1)
+
+# Tomamos la última respuesta
+ultima <- tail(respuestas, 1)
+
+tangible              <- as.numeric(ultima[["Inversión Fija Tangible (S/)"]])
+intangible            <- as.numeric(ultima[["Inversión Fija Intangible (S/)"]])
+Cap_trabajo           <- as.numeric(ultima[["Capital de Trabajo (S/)"]])
+tasa_efectiva_periodo <- as.numeric(ultima[["Tasa Efectiva por Periodo (decimal, ej. 0.12)"]])
+periodos              <- as.numeric(ultima[["Número de Periodos"]])
+pct_deuda             <- as.numeric(ultima[["% Financiado con Deuda (decimal, ej. 0.40)"]])
+
+# Normalizar si ingresaron enteros (ej. 40 en vez de 0.40)
+if (pct_deuda > 1)             pct_deuda <- pct_deuda / 100
+if (tasa_efectiva_periodo > 1) tasa_efectiva_periodo <- tasa_efectiva_periodo / 100
+
+inversion_total <- tangible + intangible + Cap_trabajo
+Capital         <- (1 - pct_deuda) * inversion_total
+Deuda           <- pct_deuda * inversion_total
+
+# Cálculo de la Cuota Fija (Método Francés)
+cuota_fija <- Deuda * (tasa_efectiva_periodo * (1 + tasa_efectiva_periodo)^periodos) /
+              ((1 + tasa_efectiva_periodo)^periodos - 1)
+
+# --- Tabla de Amortización Corregida ---
+saldo_actual <- Deuda
+vec_cuota     <- rep(cuota_fija, periodos)
+vec_intereses <- numeric(periodos)
+vec_amort     <- numeric(periodos)
+vec_saldo     <- numeric(periodos)
+
+for (i in 1:periodos) {
+  interes <- saldo_actual * tasa_efectiva_periodo
+  amortizacion_capital <- cuota_fija - interes
+  saldo_actual <- saldo_actual - amortizacion_capital
+  
+  # Corrección por redondeo decimal en el último período
+  if (i == periodos || abs(saldo_actual) < 0.01) {
+    saldo_actual <- 0
+  }
+  
+  vec_intereses[i] <- interes
+  vec_amort[i]     <- amortizacion_capital
+  vec_saldo[i]     <- saldo_actual
+}
+
+amortizacion <- data.frame(
+  Periodo        = 1:periodos,
+  Cuota          = vec_cuota,
+  Intereses      = vec_intereses,
+  Amortizacion   = vec_amort,
+  Saldo_restante = vec_saldo
+)
+
+inversion <- data.frame(
+  Inversion = c("Inversión Fija Tangible", "Inversión Fija Intangible", "Capital de trabajo"),
+  Monto     = c(tangible, intangible, Cap_trabajo)
+)
+
+# Datos para el gráfico: arranca en Periodo 0 con la Deuda total y llega a 0 en el Periodo final
+grafico_deuda <- rbind(
+  data.frame(Periodo = 0, Saldo_restante = Deuda),
+  amortizacion[, c("Periodo", "Saldo_restante")]
+)
+```
+
+## Row
+
+```{r}
+#| content: valuebox
+#| title: "Inversión Total"
+list(
+  icon = "briefcase",
+  color = "primary",
+  value = label_dollar(prefix = "S/ ", big.mark = ",")(round(inversion_total, 0))
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Capital Propio"
+list(
+  icon = "piggy-bank",
+  color = "success",
+  value = label_dollar(prefix = "S/ ", big.mark = ",")(round(Capital, 0))
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: !expr paste0("Deuda (", scales::percent(pct_deuda), ")")
+list(
+  icon = "bank",
+  color = "warning",
+  value = label_dollar(prefix = "S/ ", big.mark = ",")(round(Deuda, 0))
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Cuota Fija Anual"
+list(
+  icon = "calendar-check",
+  color = "info",
+  value = label_dollar(prefix = "S/ ", big.mark = ",")(round(cuota_fija, 0))
+)
+```
+
+## Row {height=45%}
+
+### Column {width=40%}
+
+```{r}
+#| title: "Estructura de la Inversión"
+plot_ly(
+  data = inversion,
+  labels = ~Inversion,
+  values = ~Monto,
+  type = "pie",
+  hole = 0.5,
+  textinfo = "percent+label",
+  textposition = "inside",
+  marker = list(colors = c("#3498db", "#e67e22", "#e74c3c"))
+) %>%
+  layout(
+    showlegend = FALSE,
+    margin = list(t = 25, b = 25, l = 20, r = 20)
+  )
+```
+
+### Column {width=60%}
+
+```{r}
+#| title: "Evolución del Saldo de Deuda"
+plot_ly(
+  data = grafico_deuda,
+  x = ~Periodo,
+  y = ~Saldo_restante,
+  type = "scatter",
+  mode = "lines+markers",
+  fill = "tozeroy",
+  fillcolor = "rgba(44, 62, 80, 0.15)",
+  line = list(color = "#2c3e50", width = 2),
+  marker = list(color = "#2c3e50", size = 6)
+) %>%
+  layout(
+    yaxis = list(title = "Saldo restante (S/)", rangemode = "tozero"),
+    xaxis = list(title = "Periodo", dtick = 1),
+    margin = list(t = 25, b = 25, l = 20, r = 20)
+  )
+```
+
+## Row {height=40%}
+
+```{r}
+#| title: "Tabla de Amortización"
+datatable(
+  amortizacion,
+  rownames = FALSE,
+  options = list(
+    dom = 't',
+    paging = FALSE,
+    searching = FALSE,
+    info = FALSE,
+    columnDefs = list(list(className = 'dt-right', targets = 1:4))
+  )
+) %>%
+  formatCurrency(
+    columns = c("Cuota", "Intereses", "Amortizacion", "Saldo_restante"),
+    currency = "S/ ",
+    digits = 0
+  )
+```

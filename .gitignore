@@ -1,0 +1,12 @@
+.Rproj.user/
+.Rhistory
+.RData
+.quarto/
+renv/library/
+renv/staging/
+renv/python/
+dashboard_files/
+dashboard.html
+amortizacion.csv
+inversion.csv
+sa_key.json
