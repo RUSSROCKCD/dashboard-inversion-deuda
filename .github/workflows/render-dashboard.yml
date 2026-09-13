@@ -2,8 +2,8 @@ name: Render Dashboard
 
 on:
   schedule:
-    - cron: "0 8 * * *" # todos los días 8:00 UTC (3:00 am Lima) — ajusta a tu necesidad
-  workflow_dispatch: {} # permite correrlo manualmente desde la pestaña Actions
+    - cron: "0 8 * * *"   # todos los días 8:00 UTC (3:00 am Lima) — ajusta a tu necesidad
+  workflow_dispatch: {}     # permite correrlo manualmente desde la pestaña Actions
 
 permissions:
   contents: write
@@ -17,7 +17,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup R + restaurar renv.lock
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Restaurar renv.lock
         uses: r-lib/actions/setup-renv@v2
 
       - name: Setup Quarto

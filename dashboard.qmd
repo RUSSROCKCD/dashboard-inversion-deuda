@@ -19,6 +19,9 @@ library(scales)
 library(plotly)
 library(DT)
 
+# Desactiva la autenticación para hojas públicas
+gs4_deauth()
+
 # --- Autenticación y lectura ---
 sheet_id <- "1I0rkR8shKEgKyfKvH9Q50dz3yVWE114d0p4OW5Q-BJ0"
 respuestas <- read_sheet(sheet_id, sheet = 1)
