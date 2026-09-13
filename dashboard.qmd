@@ -196,3 +196,18 @@ datatable(
     digits = 0
   )
 ```
+
+
+## Row
+
+```{r}
+#| title: "Registro Histórico de Evaluaciones"
+# Muestra todas las respuestas registradas en Google Sheets ordenadas por fecha
+datatable(
+  respuestas,
+  options = list(pageLength = 10, searching = TRUE)
+)
+```
+
+
+

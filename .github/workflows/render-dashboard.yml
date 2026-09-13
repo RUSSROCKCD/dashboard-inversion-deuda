@@ -1,6 +1,8 @@
 name: Render Dashboard
 
 on:
+  repository_dispatch:
+    types: [ nuevo_envio_formulario ]  # Se dispara automáticamente con el formulario
   push:
     branches: [ main ]     # Se ejecuta automáticamente al hacer git push
   schedule:
