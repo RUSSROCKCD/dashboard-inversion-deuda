@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="quarto-dashboard-header">
 <nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
   <div class="navbar-container container-fluid">
-    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>    
 
@@ -89,15 +89,17 @@ ul.task-list li input[type="checkbox"] {
         
       </div>
     </div>
-</div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-simulación-actual" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#simulación-actual" data-scrolling="false" href="#simulación-actual" aria-controls="simulación-actual" aria-selected="true"><span class="nav-link-text">📊 Simulación Actual</span></a></li><li class="nav-item" role="presentation"><a id="tab-historial-de-respuestas" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#historial-de-respuestas" data-scrolling="false" href="#historial-de-respuestas" aria-controls="historial-de-respuestas" aria-selected="false"><span class="nav-link-text">🗂️ Historial de Respuestas</span></a></li></ul></div></div>
 </nav>
 </header>
-<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">  
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
 
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 45fr) minmax(3em, 40fr) minmax(3em, 15fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="simulación-actual" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-simulación-actual">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 45fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="briefcase" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -108,12 +110,12 @@ grid-auto-rows: minmax(0, 1fr);">
 Inversión Total
 </p>
 <p class="value-box-value">
-S/ 2,000,000
+S/ 1,200,000
 </p>
 </div>
 </div>
 </div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-success showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-success showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="piggy-bank" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -124,12 +126,12 @@ S/ 2,000,000
 Capital Propio
 </p>
 <p class="value-box-value">
-S/ 800,000
+S/ 360,000
 </p>
 </div>
 </div>
 </div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-warning showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-warning showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="bank" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -137,15 +139,15 @@ S/ 800,000
 <i class="bi bi-bank"></i></div>
 <div class="value-box-area">
 <p class="value-box-title">
-Deuda (60%)
+Deuda (70%)
 </p>
 <p class="value-box-value">
-S/ 1,200,000
+S/ 840,000
 </p>
 </div>
 </div>
 </div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-info showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-info showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="calendar-check" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -156,24 +158,24 @@ S/ 1,200,000
 Cuota Fija Anual
 </p>
 <p class="value-box-value">
-S/ 420,318
+S/ 325,948
 </p>
 </div>
 </div>
 </div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 40fr) minmax(3em, 60fr);
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 40fr) minmax(3em, 60fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell bslib-card html-fill-container" data-title="Estructura de la Inversión" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Estructura de la Inversión" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title"><span style="display: inline">
 Estructura de la Inversión
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-4049084c01c03838fcad" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-4049084c01c03838fcad">{"x":{"visdat":{"15183e9f2614":["function () ","plotlyVisDat"]},"cur_data":"15183e9f2614","attrs":{"15183e9f2614":{"labels":{},"values":{},"hole":0.5,"textinfo":"percent+label","textposition":"inside","marker":{"colors":["#3498db","#e67e22","#e74c3c"]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":25,"l":20,"t":25,"r":20},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Inversión Fija Tangible","Inversión Fija Intangible","Capital de trabajo"],"values":[1200000,300000,500000],"hole":0.5,"textinfo":"percent+label","textposition":["inside","inside","inside"],"marker":{"color":"rgba(31,119,180,1)","colors":["#3498db","#e67e22","#e74c3c"],"line":{"color":"rgba(255,255,255,1)"}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-fe9a1148685680889759" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-fe9a1148685680889759">{"x":{"visdat":{"15cd761b3170":["function () ","plotlyVisDat"]},"cur_data":"15cd761b3170","attrs":{"15cd761b3170":{"labels":{},"values":{},"hole":0.45000000000000001,"textinfo":"percent+label","textposition":"inside","marker":{"colors":["#3498db","#e67e22","#e74c3c"]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":10,"l":10,"t":10,"r":10},"showlegend":false,"autosize":true,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Inversión Fija Tangible","Inversión Fija Intangible","Capital de trabajo"],"values":[800000,200000,200000],"hole":0.45000000000000001,"textinfo":"percent+label","textposition":["inside","inside","inside"],"marker":{"color":"rgba(31,119,180,1)","colors":["#3498db","#e67e22","#e74c3c"],"line":{"color":"rgba(255,255,255,1)"}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -182,15 +184,15 @@ Estructura de la Inversión
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div><div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell bslib-card html-fill-container" data-title="Evolución del Saldo de Deuda" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Evolución del Saldo de Deuda" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title"><span style="display: inline">
 Evolución del Saldo de Deuda
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-1cdcf75f46cae2799e68" style="width:100%;height:406px;"></div>
-<script type="application/json" data-for="htmlwidget-1cdcf75f46cae2799e68">{"x":{"visdat":{"151844293fe6":["function () ","plotlyVisDat"]},"cur_data":"151844293fe6","attrs":{"151844293fe6":{"x":{},"y":{},"mode":"lines+markers","fill":"tozeroy","fillcolor":"rgba(44, 62, 80, 0.15)","line":{"color":"#2c3e50","width":2},"marker":{"color":"#2c3e50","size":6},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":25,"l":20,"t":25,"r":20},"yaxis":{"domain":[0,1],"automargin":true,"title":"Saldo restante (S/)","rangemode":"tozero"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Periodo","dtick":1},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(44, 62, 80, 0.15)","x":[0,1,2,3,4],"y":[1200000,959681.5780909704,683315.39289558632,365494.27992089459,0],"mode":"lines+markers","fill":"tozeroy","line":{"color":"#2c3e50","width":2},"marker":{"color":"#2c3e50","size":6,"line":{"color":"rgba(31,119,180,1)"}},"type":"scatter","name":"rgba(44, 62, 80, 0.15)","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-7dff3b1b754b93762245" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-7dff3b1b754b93762245">{"x":{"visdat":{"15cd38e64a23":["function () ","plotlyVisDat"]},"cur_data":"15cd38e64a23","attrs":{"15cd38e64a23":{"x":{},"y":{},"mode":"lines+markers","fill":"tozeroy","fillcolor":"rgba(44, 62, 80, 0.15)","line":{"color":"#2c3e50","width":2},"marker":{"color":"#2c3e50","size":6},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":30,"l":75,"t":10,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Saldo restante (S/)","rangemode":"tozero"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Periodo","dtick":1},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(44, 62, 80, 0.15)","x":[0,1,2,3],"y":[840000,581251.84820108442,301803.84425825556,0],"mode":"lines+markers","fill":"tozeroy","line":{"color":"#2c3e50","width":2},"marker":{"color":"#2c3e50","size":6,"line":{"color":"rgba(31,119,180,1)"}},"type":"scatter","name":"rgba(44, 62, 80, 0.15)","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -201,16 +203,16 @@ Evolución del Saldo de Deuda
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
 </div>
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell bslib-card html-fill-container" data-title="Tabla de Amortización" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Tabla de Amortización" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title"><span style="display: inline">
 Tabla de Amortización
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-0b0cfcce4c597f783266" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-0b0cfcce4c597f783266">{"x":{"filter":"none","vertical":false,"data":[[1,2,3,4],[420318.4219090297,420318.4219090297,420318.4219090297,420318.4219090297],[180000,143952.2367136455,102497.3089343379,54824.14198813419],[240318.4219090297,276366.1851953841,317821.1129746917,365494.2799208955],[959681.5780909704,683315.3928955863,365494.2799208946,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Periodo<\/th>\n      <th>Cuota<\/th>\n      <th>Intereses<\/th>\n      <th>Amortizacion<\/th>\n      <th>Saldo_restante<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"paging":false,"searching":false,"info":false,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"className":"dt-right","targets":[1,2,3,4]},{"className":"dt-right","targets":0},{"name":"Periodo","targets":0},{"name":"Cuota","targets":1},{"name":"Intereses","targets":2},{"name":"Amortizacion","targets":3},{"name":"Saldo_restante","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-c3ccad27dcb7569ad6b2" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c3ccad27dcb7569ad6b2">{"x":{"filter":"none","vertical":false,"data":[[1,2,3],[325948.1517989156,325948.1517989156,325948.1517989156],[67200,46500.14785608675,24144.30754066044],[258748.1517989156,279448.0039428289,301803.8442582552],[581251.8482010844,301803.8442582556,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Periodo<\/th>\n      <th>Cuota<\/th>\n      <th>Intereses<\/th>\n      <th>Amortizacion<\/th>\n      <th>Saldo_restante<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"paging":false,"searching":false,"info":false,"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"targets":4,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"S/ \", 0, 3, \",\", \".\", true, null);\n  }"},{"className":"dt-right","targets":[1,2,3,4]},{"className":"dt-right","targets":0},{"name":"Periodo","targets":0},{"name":"Cuota","targets":1},{"name":"Intereses","targets":2},{"name":"Amortizacion","targets":3},{"name":"Saldo_restante","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render","options.columnDefs.2.render","options.columnDefs.3.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -220,16 +222,20 @@ Tabla de Amortización
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+</div>
+</div>
+<div id="historial-de-respuestas" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-historial-de-respuestas">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell bslib-card html-fill-container" data-title="Registro Histórico de Evaluaciones" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Registro Completo de Evaluaciones (Google Sheets)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-header"><div class="card-title"><span style="display: inline">
-Registro Histórico de Evaluaciones
+Registro Completo de Evaluaciones (Google Sheets)
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-f800402684a05048b6c1" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f800402684a05048b6c1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["2026-09-13T12:12:20Z","2026-09-13T16:58:06Z","2026-09-13T17:36:52Z"],[4236254,600000,1200000],[452800,150000,300000],[526050,250000,500000],[0.12,0.1,0.15],[5,5,4],[40,0.5,0.6]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Timestamp<\/th>\n      <th>Inversión Fija Tangible (S/)<\/th>\n      <th>Inversión Fija Intangible (S/)<\/th>\n      <th>Capital de Trabajo (S/)<\/th>\n      <th>Tasa Efectiva por Periodo (decimal, ej. 0.12)<\/th>\n      <th>Número de Periodos<\/th>\n      <th>% Financiado con Deuda (decimal, ej. 0.40)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ifrt","language":{"info":"Showing _TOTAL_ entries"},"pageLength":10,"searching":true,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Timestamp","targets":1},{"name":"Inversión Fija Tangible (S/)","targets":2},{"name":"Inversión Fija Intangible (S/)","targets":3},{"name":"Capital de Trabajo (S/)","targets":4},{"name":"Tasa Efectiva por Periodo (decimal, ej. 0.12)","targets":5},{"name":"Número de Periodos","targets":6},{"name":"% Financiado con Deuda (decimal, ej. 0.40)","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-50fce426d5ad67fdc920" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-50fce426d5ad67fdc920">{"x":{"filter":"none","vertical":false,"data":[["2026-09-13T12:12:20Z","2026-09-13T16:58:06Z","2026-09-13T17:36:52Z","2026-09-13T17:50:52Z"],[4236254,600000,1200000,800000],[452800,150000,300000,200000],[526050,250000,500000,200000],[0.12,0.1,0.15,0.08],[5,5,4,3],[40,0.5,0.6,70]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Timestamp<\/th>\n      <th>Inversión Fija Tangible (S/)<\/th>\n      <th>Inversión Fija Intangible (S/)<\/th>\n      <th>Capital de Trabajo (S/)<\/th>\n      <th>Tasa Efectiva por Periodo (decimal, ej. 0.12)<\/th>\n      <th>Número de Periodos<\/th>\n      <th>% Financiado con Deuda (decimal, ej. 0.40)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ifrt","language":{"info":"Showing _TOTAL_ entries"},"pageLength":10,"searching":true,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]},{"name":"Timestamp","targets":0},{"name":"Inversión Fija Tangible (S/)","targets":1},{"name":"Inversión Fija Intangible (S/)","targets":2},{"name":"Capital de Trabajo (S/)","targets":3},{"name":"Tasa Efectiva por Periodo (decimal, ej. 0.12)","targets":4},{"name":"Número de Periodos","targets":5},{"name":"% Financiado con Deuda (decimal, ej. 0.40)","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -237,8 +243,10 @@ Registro Histórico de Evaluaciones
     <span class="bslib-full-screen-enter badge rounded-pill">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
 
+</div>
+</div>
 </div>
 </div>
 </div>
