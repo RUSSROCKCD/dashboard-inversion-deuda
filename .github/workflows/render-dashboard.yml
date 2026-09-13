@@ -1,9 +1,11 @@
 name: Render Dashboard
 
 on:
+  push:
+    branches: [ main ]     # Se ejecuta automáticamente al hacer git push
   schedule:
-    - cron: "0 8 * * *"   # todos los días 8:00 UTC (3:00 am Lima) — ajusta a tu necesidad
-  workflow_dispatch: {}     # permite correrlo manualmente desde la pestaña Actions
+    - cron: "0 8 * * *"   # Todos los días a las 8:00 UTC (3:00 am Lima)
+  workflow_dispatch: {}     # Botón manual en la pestaña Actions
 
 permissions:
   contents: write
@@ -19,25 +21,17 @@ jobs:
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
 
-      - name: Restaurar renv.lock
+      - name: Restaurar paquetes con renv
         uses: r-lib/actions/setup-renv@v2
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Escribir credenciales de la cuenta de servicio
-        run: echo '${{ secrets.GCP_SA_KEY }}' > sa_key.json
-
       - name: Render dashboard
-        env:
-          GOOGLE_SA_KEY_PATH: sa_key.json
-          SHEET_ID: ${{ secrets.SHEET_ID }}
         run: quarto render dashboard.qmd
-
-      - name: Borrar credenciales
-        if: always()
-        run: rm -f sa_key.json
 
       - name: Agrupar salida para Pages
         run: |

@@ -22,11 +22,11 @@ library(DT)
 # Desactiva la autenticación para hojas públicas
 gs4_deauth()
 
-# --- Autenticación y lectura ---
+# Lectura de Google Sheet
 sheet_id <- "1I0rkR8shKEgKyfKvH9Q50dz3yVWE114d0p4OW5Q-BJ0"
 respuestas <- read_sheet(sheet_id, sheet = 1)
 
-# Tomamos la última respuesta
+# Tomamos la última respuesta enviada
 ultima <- tail(respuestas, 1)
 
 tangible              <- as.numeric(ultima[["Inversión Fija Tangible (S/)"]])
@@ -36,7 +36,7 @@ tasa_efectiva_periodo <- as.numeric(ultima[["Tasa Efectiva por Periodo (decimal,
 periodos              <- as.numeric(ultima[["Número de Periodos"]])
 pct_deuda             <- as.numeric(ultima[["% Financiado con Deuda (decimal, ej. 0.40)"]])
 
-# Normalizar si ingresaron enteros (ej. 40 en vez de 0.40)
+# Normalizar si se ingresaron porcentajes enteros
 if (pct_deuda > 1)             pct_deuda <- pct_deuda / 100
 if (tasa_efectiva_periodo > 1) tasa_efectiva_periodo <- tasa_efectiva_periodo / 100
 
@@ -48,8 +48,8 @@ Deuda           <- pct_deuda * inversion_total
 cuota_fija <- Deuda * (tasa_efectiva_periodo * (1 + tasa_efectiva_periodo)^periodos) /
               ((1 + tasa_efectiva_periodo)^periodos - 1)
 
-# --- Tabla de Amortización Corregida ---
-saldo_actual <- Deuda
+# Tabla de Amortización (Llega a 0 en el último período)
+saldo_actual  <- Deuda
 vec_cuota     <- rep(cuota_fija, periodos)
 vec_intereses <- numeric(periodos)
 vec_amort     <- numeric(periodos)
@@ -60,7 +60,6 @@ for (i in 1:periodos) {
   amortizacion_capital <- cuota_fija - interes
   saldo_actual <- saldo_actual - amortizacion_capital
   
-  # Corrección por redondeo decimal en el último período
   if (i == periodos || abs(saldo_actual) < 0.01) {
     saldo_actual <- 0
   }
@@ -83,7 +82,7 @@ inversion <- data.frame(
   Monto     = c(tangible, intangible, Cap_trabajo)
 )
 
-# Datos para el gráfico: arranca en Periodo 0 con la Deuda total y llega a 0 en el Periodo final
+# Datos para el gráfico (inicia en Periodo 0 con la deuda total)
 grafico_deuda <- rbind(
   data.frame(Periodo = 0, Saldo_restante = Deuda),
   amortizacion[, c("Periodo", "Saldo_restante")]
